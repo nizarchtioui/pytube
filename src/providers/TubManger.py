@@ -1,5 +1,5 @@
 from pytube import YouTube
-import time, sys
+import time, sys, json
 from pydub import AudioSegment
 
 
@@ -16,7 +16,9 @@ class YoutubeManager:
            
             if subtyp == "mp3":
                 streams = yt.streams.filter(subtype='mp4').first()
+                print(streams)
                 r = streams.download(r"static/db")
+                prtin(r)
                 track = AudioSegment.from_file(r)
                 print('CONVERTING')
                 track.export(r"static/db/%s.mp3"%id_video, format='mp3')
