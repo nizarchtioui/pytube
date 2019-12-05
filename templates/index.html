@@ -46,9 +46,9 @@
                       <select class="custom-btn btn-danger" id = "qualityselected"> 
                         <option  aria-haspopup="true" aria-expanded="false" style="
                         border-radius: 1;" selected>MP4</option>
-                       
-                        <option value="2">WEBM</option>
-                        <option value="3">3GPP</option>
+                       <option value="MP3">MP3</option>
+                        <option value="WEBM">WEBM</option>
+                        <option value="3GPP">3GPP</option>
                       </select>
                       
                       <input class="btn btn-primary" type="button" value="OK" id="btnDownload">
@@ -64,18 +64,21 @@
              <div class="alert alert-warning" style="margin-top:18px;">
                 <strong>Something Wrong !</strong> 
               </div>
-           
-
-              {% endif %}
-
-              {% if path %}
-              
               {% else %}
+
+
+              {% if path == True %}
+
+
+              {% else %}
+              {% if  path  != False %}
               <div class="alert alert-info" style="margin-top:18px;">
-                    <strong>{{path}}</strong> 
+                    <strong>Download From : <a href="{{path}}">here</a></strong> 
                   </div>
+             
              {% endif %}
-              
+             {% endif %}
+             {% endif %}
          </div>
         </div>
         <form action="/download" id='down'  method="POST">

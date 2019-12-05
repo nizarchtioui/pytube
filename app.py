@@ -7,7 +7,7 @@ app = Flask(__name__)
 @app.route("/")
 def index():
     print("Start")
-    return render_template('index.html', Haserreur = False, path =True)
+    return render_template('index.html', Haserreur = False, path = True)
 
 
 @app.route("/download",  methods=['POST'])
@@ -17,11 +17,13 @@ def download():
     print(url)
     print(quality)
     path = YoutubeManager.DownloadVideo(url,quality)
+    print(path)
     if path == False:
         return render_template('index.html', Haserreur = True)
     else:
         download = request.url_root+path
-        return render_template('index.html', Haserreur = False, path =download )
+        print(download)
+        return render_template('index.html', Haserreur = False, path = download )
         
     pass
 if __name__ == "__main__":
